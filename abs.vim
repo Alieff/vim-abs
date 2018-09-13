@@ -1,9 +1,7 @@
 " Vim syntax file
-" Language:	ABS based on JAVA
+" Language:	ABS 
 " Maintainer:	Alief <serdralfs@gmail.com> 
-" Taken From:	Claudio Fleiner <claudio@fleiner.com> (Java)
-" URL:          https://github.com/fleiner/vim/blob/master/runtime/syntax/java.vim
-" Last Change:	2018 July 26
+" Last Change:	2018 Sep 14
 
 syn match absExternal		"\<import\>\(\s\+static\>\)\?"
 syn keyword absExternal		import export module from
