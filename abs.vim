@@ -5,7 +5,7 @@
 
 syn match absExternal		"\<import\>\(\s\+static\>\)\?"
 syn keyword absExternal		import export module from
-syn keyword absClassDecl	extends implements interface nextgroup=absTypedef
+syn keyword absClassDecl	extends implements interface nextgroup=absTypedef skipwhite
 syn keyword absClassDecl	class
 syn region absBlock             start=/{/ end=/}/ contains=absBlock,absRegion,@absStatementCluster
 syn region absRegion            start=/(/ end=/)/ keepend  contains=absRegion,absRegionTypedef,@absStatementCluster
@@ -17,7 +17,7 @@ syn keyword absCase		case contained
 syn keyword absType		boolean char byte short int long float double contained
 syn keyword absType		void contained
 syn keyword absTypedef		this super contained containedin=ALL
-syn match absTypedef		"\([\n \t!.]\)\@<=[A-Z][A-Za-z]*"  nextgroup=absTypeParam contained 
+syn match absTypedef		"\(interface *\)\@<!\([\n \t!.]\)\@<=[A-Z][A-Za-z]*"  nextgroup=absTypeParam contained 
 syn match absRegionTypedef      "[A-Z][A-Za-z]*"  contained 
 syn region absTypeParam          start="<" end=">" contained contains=absRegionTypedef,absTypeParam
 syn keyword absConstant	        null contained
