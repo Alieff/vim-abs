@@ -8,3 +8,6 @@ add below code to your `.vimrc`
 ```
 source <your_prefered_path>/abs.vim
 ```
+
+# Note
+
