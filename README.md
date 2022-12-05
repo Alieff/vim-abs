@@ -1,5 +1,5 @@
 # abs.vim
-Simple ABS syntax highlighting 
+Simple ABS (Abstract Behavioural Specification Language) syntax highlighting 
 
 # Installation 
 copy file `abs.vim` to your prefered path
