@@ -11,7 +11,7 @@ syn match absProduct            "^[ \t]*\(features\)"
 syn keyword absFeatureModel	root group opt allof require exclude
 " absClassDecl can be followed by absTypeDef (definisi dari tipe, mis."..implements <AbsTypedef>")
 syn keyword absClassDecl	extends implements interface nextgroup=absTypedef skipwhite
-syn keyword absOtherKeyword	data
+syn keyword absOtherKeyword	data type def case try catch Try Catch return throw await assert
 syn keyword absClassDecl	class
 " abs block contain: another block, region, statement cluster, comments, feature model
 syn region absBlock             start=/{/ end=/}/ contains=absBlock,absRegion,@absStatementCluster,absComment,absFeatureModel
@@ -51,7 +51,7 @@ syn match absIdentifier         "\([ \n\t(,]\)\@<=[a-z][_a-z0-9A-Z]*\( *(\)\@!\(
 
 syn cluster absKeyword        add=absConditional,absRepeat,absCase,absType,absBoolean,absOperator,absStatement,absConstant,absClassDecl
 syn cluster absStatementCluster        add=absConditional,absRepeat,absCase,absType,absTypedef,absConstant,absStatement,absBoolean,
-      \absOperator,absNumber,absString,absTypeParam,absIdentifier
+      \absOperator,absNumber,absString,absTypeParam,absIdentifier,absOtherKeyword
 
 " HIGHLIGHTING
 hi  link  absClassDecl      Keyword
