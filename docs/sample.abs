@@ -1,0 +1,151 @@
+// this is not real code, just to simulate syntax highlighting
+// Modules
+// declare module first
+module MStoryBoard_ProgramModel; 
+// declare export
+export *;
+// then import
+import Program, ProgramImpl from MProgramModel;
+import ProgramDb, ProgramDbImpl from MProgramDbImpl;
+
+// type declaration
+type Filename = String;
+type Filenames = Set<Filename>;
+
+// Data types declaration
+data Level = Standard | Silver | Gold;
+data Customer = Test | Person(Int, Level) | Company(Int);
+// Algebraic data type
+data IntList = NoInt | ConsInt(Int head, IntList tail);  // <<<<<< here {{ConsInt}} is data constructor
+data Bool = True | False; 
+data NotInstantiable; 
+// Accessor Function
+data Person = Person(String name, Int age); 
+{
+    Person john = Person("John", 34);
+    Int age = age(john);  
+}
+// Parametric data type
+data List<A> = Nil | Cons(A, List<A>);
+
+// function
+def Set<A> set<A>(List<A> l) = 
+case l {
+    Nil => EmptySet;
+    Cons(x,xs) => insertElement(set(xs), x);
+};
+// Function
+def Rat abs(Rat x) = if x > 0 then x else -x; 
+def Int length<A>(List<A> list) = 
+case list {
+    Nil => 0;
+    Cons(_, ls) => 1 + length(ls);
+};
+// Partial Function 
+def B apply<A, B>(fn)(A value) = fn(a);
+def Int double(Int x) = x * 2;
+{
+    // doubled = 4
+    Int doubled = apply(double)(2);
+}
+// Anonymous Function #list
+List<Int> list = list[1, 2, 3];
+list = map({{(Int y) => y * 2}})(list);
+
+// CLASS
+class DataBase(Map<Filename,File> db) implements DB { // constructor parameter defined at this header
+    [Final] Int constant_j = 24; // constant
+
+    {
+        // this is an init block / constructor
+        // only atomic method could be called in this block
+    }
+
+    [Atomic] Int m() {
+        return 24;
+    }
+
+    File getFile(Filename fId) {
+        // IF
+        if (5 < x) {
+            y = 6;
+        }
+        else {
+            y = 7;
+        }
+        if (True)
+            x = 5;
+            > oneline if 
+        if (x>=fee) result = original(x-fee)
+
+        // Loop
+            while (x < 5) {
+                x = x + 1;
+            }
+        foreach (i in list[1, 2, 3]) {
+            println("i = " + toString(i));
+        }
+        Int count = 0; while(count < length(coaList)) { ChartOfAccountEntry entry = nth(coaList, count);count = count + 1;}
+
+
+        // CASE
+        Pair<Int, Int> p = Pair(2, 3);
+        Int x = 0;
+        case p {
+            Pair(2, y) => { x = y; skip; }
+            _ => x = -1;
+        }
+
+        Try{
+            some_code_here;
+        } catch{
+
+        }
+
+        return lookup(db, fId);
+    }
+    Int getLength(Filename fId){
+        List<Int> l = Cons(1, Cons(2, Nil));
+        // Assert 
+        assert x != null;
+        // Await 
+        Fut<Bool> f = x!m();
+        await f?; #	A claim guard becomes active when the future is resolved (contains a value or an exception).
+        await duration(3, 5); # await using duration
+        // throw
+        throw AssertionFailException; # {{cannot be used inside function}}
+        def Maybe<Int> f(Int x, Int y) = if (y < 0) then None else Just(x); # use this as alternative
+        // try catch 
+        try {
+            Rat z = 1/x; 
+        } catch {
+            DivisionByZeroException => println("We divided by zero"); 
+        } finally {
+            println("Leaving the protected area"); 
+        }
+        try b = f.get; catch _ => b = False;  # "_" is wildcard a.k.a 'catch all'
+            > create class in cog 
+        return length(lookup(db, fId));
+    }
+
+}
+
+// Interface
+interface DB {
+    File getFile(Filename fId);
+    Int getLength(Filename fId);
+    Unit storeFile(Filename fId, File file);
+    Filenames listFiles();
+}
+interface Client {
+    List<Pair<Server,Filenames>> availFiles(List<Server> sList);
+    Unit reqFile(Server sId, Filename fId);
+}
+interface Server {
+    Filenames inquire();
+    Int getLength(Filename fId);
+    Packet getPack(Filename fId, Int pNbr);
+}
+interface Peer extends Client, Server {
+    List<Server> getNeighbors();
+}
