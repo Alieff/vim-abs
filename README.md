@@ -1,5 +1,9 @@
 # abs.vim
 Simple ABS ([Abstract Behavioural Specification Language](https://abs-models.org/)) syntax highlighting for VIM.
+Not perfect but still better than nothing :)
+
+#### Demo
+![Demo](docs/demo.gif)
 
 # Installation 
 
